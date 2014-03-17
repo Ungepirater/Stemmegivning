@@ -1,0 +1,10 @@
+{
+	"name":"",
+	"domain":"",
+	"port":"",
+	"mongoDBhost":"",
+	"mongoDBusername":"",
+	"mongoDBpassword":"",
+	"mongoDBdatabase":"",
+	"cookieSecret":"ImASuperSecretCookieSecret"
+}
