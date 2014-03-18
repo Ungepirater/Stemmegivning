@@ -7,5 +7,6 @@
 	"mongoDBpassword":"",
 	"mongoDBdatabase":"",
 	"cookieSecret":"ImASuperSecretCookieSecret",
-	"SaltWorkFactor":10
+	"SaltWorkFactor":10,
+	"theme":"default"
 }

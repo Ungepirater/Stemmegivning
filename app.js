@@ -1,7 +1,7 @@
 
 /**
 * Module dependencies.
-*/
+**/
 
 var express = require('express');
 var http = require('http');
@@ -9,13 +9,13 @@ var path = require('path');
 
 /**
 * Get settings
-*/
+**/
 
 var settings = JSON.parse(require('./settings.json'));
 
 /**
 * Crypto and DB
-*/
+**/
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -26,7 +26,7 @@ var SALT_WORK_FACTOR = settings["SaltWorkFactor"];
 
 /**
 * DB setup
-*/
+**/
 
 mongoose.connect(settings["mongoDBhost"], settings["mongoDBdatabase"]);
 
@@ -37,7 +37,10 @@ db.once('open', function callback() {
 });
 
 
-
+/**
+* Other settings
+**/
+var theme = settings["theme"];
 
 
 var app = express();
