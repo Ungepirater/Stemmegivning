@@ -6,13 +6,16 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
+/**
+* File io management
+**/
+var fs = require('fs');
 
 /**
 * Get settings
 **/
 
-var settings = JSON.parse(require('./settings.json'));
-
+var settings = JSON.parse(fs.readFileSync('./settings.json'));
 /**
 * Crypto and DB
 **/
@@ -48,7 +51,7 @@ var app = express();
 
 // all environments
 app.set('port', settings["port"]);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views/'+theme+'/'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -58,13 +61,21 @@ app.use(express.methodOverride());
 app.use(express.cookieParser(settings["cookieSecret"]));
 app.use(express.session());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public/'+theme+'/')));
 
 // development only
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
 
+/**
+* Index route
+**/
+app.get('/', function(req,res){
+	
+	res.render('index', { user: req.user });
+
+});
 
 
 http.createServer(app).listen(app.get('port'), function(){
