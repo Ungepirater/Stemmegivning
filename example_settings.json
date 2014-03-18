@@ -6,5 +6,6 @@
 	"mongoDBusername":"",
 	"mongoDBpassword":"",
 	"mongoDBdatabase":"",
-	"cookieSecret":"ImASuperSecretCookieSecret"
+	"cookieSecret":"ImASuperSecretCookieSecret",
+	"SaltWorkFactor":10
 }

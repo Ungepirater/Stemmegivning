@@ -7,11 +7,41 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 
-var app = express();
+/**
+* Get settings
+*/
+
+var settings = JSON.parse(require('./settings.json'));
 
 /**
-* Get settings*/
-var settings = JSON.parse(require('./settings.json'));
+* Crypto and DB
+*/
+
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var mongodb = require('mongodb');
+var mongoose = require('mongoose');
+var bcrypt = require('bcrypt');
+var SALT_WORK_FACTOR = settings["SaltWorkFactor"];
+
+/**
+* DB setup
+*/
+
+mongoose.connect(settings["mongoDBhost"], settings["mongoDBdatabase"]);
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function callback() {
+	console.log('Connected to DB');
+});
+
+
+
+
+
+var app = express();
+
 
 // all environments
 app.set('port', settings["port"]);
@@ -31,6 +61,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
 	app.use(express.errorHandler());
 }
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
