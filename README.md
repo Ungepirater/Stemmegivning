@@ -10,9 +10,12 @@ Voting platform for the norwegian Young Pirates. Will and can be used for live-v
 * Easier vote-counting system for general assemblies or similar events
 * Easy proposal-representation for both IRL participants as well as online participants
 
+###Setup
+
 ###Configuration options
 
-###Setup
+####Theme
+The available themes are located within themes/ and the currently used one can be changed in settings.json
 
 ###Usage
 
