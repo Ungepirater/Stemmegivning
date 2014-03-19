@@ -51,7 +51,7 @@ var app = express();
 
 // all environments
 app.set('port', settings["port"]);
-app.set('views', path.join(__dirname, 'views/'+theme+'/'));
+app.set('views', path.join(__dirname, 'themes/'+theme+'/views'));
 app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
@@ -61,7 +61,7 @@ app.use(express.methodOverride());
 app.use(express.cookieParser(settings["cookieSecret"]));
 app.use(express.session());
 app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public/'+theme+'/')));
+app.use(express.static(path.join(__dirname, 'themes/'+theme+'/public')));
 
 // development only
 if ('development' == app.get('env')) {
