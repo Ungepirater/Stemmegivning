@@ -78,24 +78,30 @@ app.get('/', function(req,res){
 });
 
 app.post('/guest', function(req,res){
-	
-	//res.redirect('/');
-	res.render('guest', { user: req.user });
+	if(validateEmail(req.body.email)){
+		var base64encodedEmail = new Buffer(req.body.email).toString('base64')
+		res.redirect('/guest/'+base64encodedEmail);
+	}else{
+		res.redirect('/?err');
+	}
 
 });
 
 
 app.get('/guest', function(req,res){
-	
-	//res.redirect('/');
-	res.render('guest', { user: req.user });
+
+	res.redirect('/');
 
 });
 
 
 app.get('/guest/:base64email', function(req,res){
-	
-	res.render('guest', { user: req.user });
+	var plainTextEmail = new Buffer(req.params.base64email, 'base64').toString('ascii');
+	if(validateEmail(plainTextEmail)){
+		res.render('guest', { user: req.user });
+	}else{
+		res.redirect('/?err');
+	}	
 
 });
 
@@ -104,7 +110,9 @@ http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });
 
-
+/**
+* Usefull functions
+**/
 function validateEmail(email) {
     //Check if any value was actually set
     if (email.length == 0) return false;
