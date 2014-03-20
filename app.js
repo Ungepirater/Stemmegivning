@@ -72,12 +72,28 @@ if ('development' == app.get('env')) {
 * Index route
 **/
 app.get('/', function(req,res){
-	
+
 	res.render('index', { user: req.user });
 
 });
 
+app.post('/guest', function(req,res){
+	
+	//res.redirect('/');
+	res.render('guest', { user: req.user });
+
+});
+
+
 app.get('/guest', function(req,res){
+	
+	//res.redirect('/');
+	res.render('guest', { user: req.user });
+
+});
+
+
+app.get('/guest/:base64email', function(req,res){
 	
 	res.render('guest', { user: req.user });
 
