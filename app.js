@@ -77,6 +77,12 @@ app.get('/', function(req,res){
 
 });
 
+app.get('/guest', function(req,res){
+	
+	res.render('guest', { user: req.user });
+
+});
+
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
