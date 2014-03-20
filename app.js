@@ -103,3 +103,13 @@ app.get('/guest/:base64email', function(req,res){
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+function validateEmail(email) {
+    //Check if any value was actually set
+    if (email.length == 0) return false;
+    //Email validation
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+    return re.test(email);
+}
+
