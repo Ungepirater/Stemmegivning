@@ -5,6 +5,8 @@ Stemmegivning
 
 Voting platform for the norwegian Young Pirates. Will and can be used for live-voting on general assemblies or similar events.
 
+See the Stemmegivning irc channel at the piratirc network for dev chat
+
 ###What can it do?
 * Enable people who may not be attending an event to vote on proposals
 * Easier vote-counting system for general assemblies or similar events
