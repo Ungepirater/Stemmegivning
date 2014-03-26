@@ -17,6 +17,7 @@ See the Stemmegivning irc channel at the piratirc network for dev chat
 ###Configuration options
 
 ####Theme
+...
 The available themes are located within themes/ and the currently used one can be changed in settings.json
 
 ###Usage
